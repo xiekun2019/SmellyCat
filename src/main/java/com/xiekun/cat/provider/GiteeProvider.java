@@ -45,6 +45,7 @@ public class GiteeProvider {
 
         try (Response response = client.newCall(request).execute()) {
             String responseStr = response.body().string();
+            System.out.println(responseStr);
             return JSON.parseObject(responseStr, GithubUser.class);
         } catch (IOException e) {
             e.printStackTrace();
