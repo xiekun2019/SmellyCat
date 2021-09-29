@@ -20,9 +20,15 @@ public class GithubProvider {
                 .post(body)
                 .build();
         try (Response response = client.newCall(request).execute()) {
-            String string = response.body().string();
-            System.out.println(string);
-            return string;
+            String responseStr = response.body().string();
+            System.out.println(responseStr);
+            String tokenStr = responseStr.split("&")[0];
+            String[] tokenSplit = tokenStr.split("=");
+            if(tokenSplit[0].equals("access_token")) {
+                return tokenSplit[1];
+            }
+//            System.out.println(responseStr);
+//            return responseStr;
         } catch (IOException e) {
             e.printStackTrace();
         }
