@@ -32,18 +32,24 @@
       </form>
       <ul class="nav navbar-nav navbar-right">
 <!--        <li><a href="https://github.com/login/oauth/authorize?client_id=c34c953c80931df12f1a&redirect_uri=http://localhost:8887/callback&state=1">登录</a></li>-->
-        <li><a href="https://gitee.com/oauth/authorize?client_id=176c58d23c0c1021fbe478ab3e6223a52cb5a3433c5c92e02c76d31fe26a60dc&redirect_uri=http://localhost:8887/callback&response_type=code">登录</a></li>
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">我<span class="caret"></span></a>
+        <li class="dropdown" th:if="${session.user != null}">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+            <span th:text="${session.user.getName()}"></span>
+            <span class="caret"></span>
+          </a>
           <ul class="dropdown-menu">
             <li><a href="#">消息中心</a></li>
             <li><a href="#">个人资料</a></li>
             <li><a href="#">退出登录</a></li>
           </ul>
         </li>
+
+        <li th:if="not ${session.user != null}">
+          <a href="https://gitee.com/oauth/authorize?client_id=176c58d23c0c1021fbe478ab3e6223a52cb5a3433c5c92e02c76d31fe26a60dc&redirect_uri=http://localhost:8887/callback&response_type=code">登录</a>
+        </li>
       </ul>
-    </div><!-- /.navbar-collapse -->
-  </div><!-- /.container-fluid -->
+    </div>
+  </div>
 </nav>
 </body>
 </html>
