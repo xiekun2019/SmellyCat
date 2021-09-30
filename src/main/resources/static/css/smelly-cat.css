@@ -1,13 +1,19 @@
 body{
-    background-color: #CBCBCB;
+    background: url("../images/bg.jpg");
 }
 
 .main {
     background-color: white;
-    margin: 30px;
+    margin: 50px;
+    border-radius: 10px;
 }
 
 .btn-publish {
     float: right;
-    margin-bottom: 15px;
+    margin-bottom: 30px;
+}
+
+.zhi-nan{
+    font-family: 微软雅黑;
+    color: #c0a16b;
 }
